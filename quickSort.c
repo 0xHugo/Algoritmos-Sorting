@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 void quickSort(int array[], int length);
 void quickSortRecursion(int array[], int low, int high);
@@ -20,6 +21,8 @@ int main(void){
 }
 
 void quickSort(int array[], int length){
+
+    srand(time(NULL));
     quickSortRecursion(array, 0, length - 1);
 }
 
@@ -39,6 +42,11 @@ void swap(int *x, int *y){
 }
 
 int partition(int array[], int low, int high){
+
+    int pivotIndex = low + (rand() % (high-low));
+
+    if(pivotIndex != high) swap(&array[pivotIndex], &array[high]);
+
     int pivotValue = array[high];
     int i = low;
 
