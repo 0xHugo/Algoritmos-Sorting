@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "auxiliar.h"
+#include "quickSort.h"
 
 void quickSort(int array[], int length){
 
