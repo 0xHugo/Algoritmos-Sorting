@@ -1,29 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-
-void swap(int *x, int *y);
-void bubbleSort(int a[], int length);
-
-int main(void){
-
-    int a[] = {1,23,5,373,13,23,1,124,15,2,63};
-    int length = 11;
-
-    bubbleSort(a, length);
-
-    for(int i = 0; i < length; i++){
-        printf("%d ", a[i]);
-    }
-
-    return 0;
-}
-
-void swap(int *x, int *y){
-    int temp = *x;
-    *x = *y;
-    *y = temp;
-}
+#include "auxiliar.h"
 
 void bubbleSort(int a[], int length){
 
