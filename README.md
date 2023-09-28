@@ -1,4 +1,4 @@
-![image](https://github.com/0xHugo/Algoritmos-Sorting/assets/120257009/18d987fb-dbb4-41e5-9fb5-f0c0b4008c43)
+![image](https://github.com/0xHugo/Algoritmos-Sorting/assets/120257009/05fede01-b020-4903-a9e1-3df7ec1042f8)
 
 # Algoritmos Sorting en C
 Implementación los siguientes algoritmos en C: 
