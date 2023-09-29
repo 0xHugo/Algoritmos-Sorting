@@ -8,6 +8,7 @@
 #include "insertionSort.h"
 #include "quickSort.h"
 #include "selectionSort.h"
+#include "mergeSort.h"
 
 #ifdef _WIN32
 #define CLEAR_SCREEN "cls"
@@ -76,6 +77,8 @@ int main(int argc, char const *argv[]){
                 mostrarResultados(matriz, longitud);
                 break;
             case '5':
+                mergeSort(matriz, longitud);
+                mostrarResultados(matriz, longitud);
                 break;
             default:
                 break;
@@ -134,10 +137,10 @@ char menuCarga(void){
 
     char seleccion;
     asciiArt();
-    printf("\nOrdenacion de una matriz de numeros enteros mediante 5 algoritmos distintos\n");
+    printf("\n-> Ordenacion de una matriz de numeros enteros mediante 5 algoritmos distintos\n");
     printf("\nOPCIONES: \n\n");
     puts("  1 - Introducir matriz por teclado");
-    puts("  2 - Cargar matriz desde un archivo / Aun no funciona");
+    puts("  2 - Cargar matriz desde un archivo");
     puts("  S - Salir");
     printf("\nSELECCION: ");
     scanf("%c", &seleccion);
@@ -186,7 +189,7 @@ int * creacionMatriz(int *length){
         scanf("%d", &array[i]);
     }
     
-    printf("La matriz ha sido cargada correctamente, pulsa cualquier tecla para continuar");
+    printf("La matriz ha sido cargada correctamente, pulsa enter para continuar");
     getchar();
     getchar();
 
