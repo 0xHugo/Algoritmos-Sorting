@@ -29,7 +29,9 @@ Ejecuta el .exe creado desde la terminal:
 
 ## Guardar resultados
 
-Si eliges guardar los resultados en un archivo la ruta en la que se guardan es `/output`
+Si eliges guardar los resultados en un archivo, la ruta en la que se guardan es `/output`
+
+Con la instalacion inicial, esta carpeta contiene un ejemplo para ver el formato en el que se guardan los resultados, este archivo se puede eliminar.
 
 Puedes ver su contenido por la terminal mediante: 
 ```bash
