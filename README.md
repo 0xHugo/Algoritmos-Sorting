@@ -29,11 +29,11 @@ Ejecuta el .exe creado desde la terminal:
 
 ## Guardar resultados
 
-Si eliges guardar los resultados en un archivo la ruta en la que se guardan es /output
+Si eliges guardar los resultados en un archivo la ruta en la que se guardan es `/output`
 
 Puedes ver su contenido por la terminal mediante: 
 ```bash
-  cd ./output
+  cd /output
   cat <nombreArchivo.txt>
 ```
 O abrirlo con tu editor de texto favorito / notepad

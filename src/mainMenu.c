@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include <signal.h>
+#include <stdbool.h>
+#include <string.h>
 
 #include "auxiliar.h"
 #include "bubbleSort.h"
@@ -22,6 +24,7 @@ void asciiArt(void);
 char menuOrdenacion(void);
 void funcionSalidaPrograma(int * matriz);
 void mostrarResultados(int * matriz, int longitud);
+void mayorMenor(int * matriz, int longitud);
 
 int main(int argc, char const *argv[]){
     
@@ -99,21 +102,75 @@ int main(int argc, char const *argv[]){
 
 void mostrarResultados(int * matriz, int longitud){
 
-    char seleccion;
+    char seleccionMayorMenor,seleccionSalida, seleccionArchivo;
+    bool guardarArchivo = false;
+    char nombreArchivo[50];
+    char nombreArchivoExtension[54];
 
-    printf("\nLa matriz ha sido ordenada correctamente:\n");
+    do{  
+        asciiArt();
+        puts("\nFORMATO DEL RESULTADO: \n");
+        puts("  1 - De mayor a menor");
+        puts("  2 - De menor a mayor");
+        printf("\nSELECCION: ");
+        scanf("%c", &seleccionMayorMenor);
+        system(CLEAR_SCREEN);
+    } while (seleccionMayorMenor != '1' && seleccionMayorMenor != '2');
+    
+    
+    do {
+        asciiArt();
 
-    printf("[ ");
-    for(int i = 0; i < longitud; i++){
-        printf("%d ", matriz[i]);
+        printf("\nLa matriz ha sido ordenada correctamente:\n");
+
+        if(seleccionMayorMenor == '1') mayorMenor(matriz, longitud);
+
+        printf("[ ");
+        for(int i = 0; i < longitud - 1; i++){
+            printf("%d, ", matriz[i]);
+        }
+        printf("%d]\n\n", matriz[longitud - 2]);
+        puts("============================================================================================");
+        printf("\nAlmacenar los resultados en un archivo? (S/N): ");
+        scanf(" %c", &seleccionArchivo);
+    } while(seleccionArchivo != 'S' && seleccionArchivo != 's' && seleccionArchivo != 'n' && seleccionArchivo != 'N');
+
+    switch(seleccionArchivo){
+        case 'S':
+            guardarArchivo = true;
+            break;
+        case 's':
+            guardarArchivo = true;
+            break;
     }
-    printf("]\n\n");
+
+    if(guardarArchivo){
+        printf("Introduce el nombre del archivo txt en el que almacenar los resultados: ");
+        scanf(" %s", nombreArchivo);
+        if(strstr(nombreArchivo, ".txt") == NULL){
+            sprintf(nombreArchivoExtension, "./output/%s.txt", nombreArchivo);
+        }else{
+            sprintf(nombreArchivoExtension, "./output/%s", nombreArchivo);
+        }
+
+        FILE * resultado = fopen(nombreArchivoExtension, "w");
+        if(resultado == NULL){
+            printf("Error al abrir el archivo, saliendo...");
+            funcionSalidaPrograma(matriz);
+        }
+
+        for(int i = 0; i < longitud; i++){
+            fprintf(resultado, "%d ", matriz[i]);
+        }
+
+        printf("\nGuardado correctamente en '%s'\n", nombreArchivo);
+    }
 
     do {
-        printf("Salir del programa? (S/N): ");
-        scanf(" %c", &seleccion);
+        printf("\n\n\nSalir del programa? (S/N): ");
+        scanf(" %c", &seleccionSalida);
 
-        switch (seleccion)
+        switch (seleccionSalida)
         {
         case 's':
             funcionSalidaPrograma(matriz);
@@ -130,7 +187,7 @@ void mostrarResultados(int * matriz, int longitud){
         default:
             break;
         }
-    } while(seleccion != 's' && seleccion != 'n' && seleccion != 'S' && seleccion != 'N');
+    } while(seleccionSalida!= 's' && seleccionSalida != 'n' && seleccionSalida != 'S' && seleccionSalida != 'N');
 
 }
 char menuCarga(void){
@@ -161,16 +218,17 @@ char menuOrdenacion(void){
     puts("  4 - Quick Sort");
     puts("  5 - Merge Sort");
     printf("\nSELECCION: ");
-    scanf("%c", &seleccion);
-
+    scanf(" %c", &seleccion);
+    getchar();
+    system(CLEAR_SCREEN);
     return seleccion;
 }
 
 int * creacionMatriz(int *length){
     int longitud; 
-
+    asciiArt();
     do {
-        printf("Longitud de la matriz: ");
+        printf("\nLongitud de la matriz: ");
         scanf("%d", &longitud);        
     } while(longitud <= 0);
 
@@ -182,14 +240,14 @@ int * creacionMatriz(int *length){
         exit(-1);
     }
 
-    printf("Introduce la matriz: \n");
+    printf("\nIntroduce la matriz: \n");
 
     for(int i = 0; i < longitud; i++){
         printf("[%d] => ", i);
         scanf("%d", &array[i]);
     }
     
-    printf("La matriz ha sido cargada correctamente, pulsa enter para continuar");
+    printf("\nLa matriz ha sido cargada correctamente, pulsa enter para continuar");
     getchar();
     getchar();
 
@@ -216,4 +274,20 @@ void asciiArt(void){
 void funcionSalidaPrograma(int * matriz){
     free(matriz);
     exit(0);
+}
+
+void mayorMenor(int * matriz, int longitud){
+    int inicio = 0;
+    int fin = longitud - 1;
+
+    while (inicio < fin){
+
+        int temp = matriz[inicio];
+        matriz[inicio] = matriz[fin];
+        matriz[fin] = temp;
+
+        inicio++;
+        fin--;
+    }
+    
 }
