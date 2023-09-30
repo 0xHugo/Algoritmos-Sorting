@@ -1,4 +1,4 @@
-![image](https://github.com/0xHugo/Algoritmos-Sorting/assets/120257009/05fede01-b020-4903-a9e1-3df7ec1042f8)
+![image](https://github.com/0xHugo/Algoritmos-Sorting/assets/120257009/74519486-b568-45f9-9da0-1e5245142ea5)
 
 # Algoritmos Sorting en C
 Implementación los siguientes algoritmos en C: 
@@ -7,14 +7,43 @@ Implementación los siguientes algoritmos en C:
 3. Insertion Sort
 4. Merge Sort
 5. Quick Sort
+
+
+## Instalacion
+
+Necesario: git gcc  make
+
+Clona el repositorio: 
+```bash
+  git clone https://github.com/0xHugo/Algoritmos-Sorting
+  cd Algoritmos-Sorting
+```
+Compila mediante el makefile
+```bash
+  make
+```
+Ejecuta el .exe creado desde la terminal: 
+```bash
+  ./algoSorting.exe
+```
+
+## Guardar resultados
+
+Si eliges guardar los resultados en un archivo la ruta en la que se guardan es /output
+
+Puedes ver su contenido por la terminal mediante: 
+```bash
+  cd ./output
+  cat <nombreArchivo.txt>
+```
+O abrirlo con tu editor de texto favorito / notepad
+
 ## Roadmap
-- [ ]  Terminar merge sort
+- [x]  Terminar merge sort
 - [x]  Creación de un menú desde el que introducir el array que se vaya a ordenar así como la selección del algoritmo
 - [x]  Reserva de ese array mediante memoria dinámica
 - [ ]  Lectura de un array desde un archivo
-- [ ]  Escritura de los resultados a un archivo
-- [ ]  Posibilidad de darle la vuelta al modo de ordenación (de mayor a menor / de menor a mayor)
-- [ ]  Modo Benchmark - Ejecución de los 5 algoritmos sobre un mismo array. Devuelve métricas sobre el rendimiento como tiempo de ejecución, numero de comparaciones,...
-- [ ]  Makefile para facilitar la compilacion del proyecto
-
-
+- [x]  Escritura de los resultados a un archivo
+- [x]  Posibilidad de elegir el modo de ordenación (de mayor a menor / de menor a mayor)
+- [ ]  Modo Benchmark - Ejecución de los 5 algoritmos sobre un mismo array. Devuelve métricas sobre el rendimiento.
+- [x]  Makefile para facilitar la compilacion del proyecto
